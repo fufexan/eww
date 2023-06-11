@@ -35,6 +35,7 @@
             version = self.rev or "dirty";
             src = builtins.path { name = "eww"; path = prev.lib.cleanSource ./.; };
             cargoDeps = rustPlatform.importCargoLock { lockFile = ./Cargo.lock; };
+            buildInputs = old.buildInputs ++ (with final; [ glib librsvg libdbusmenu-gtk3 gtk-layer-shell]);
             patches = [ ];
           });
 
